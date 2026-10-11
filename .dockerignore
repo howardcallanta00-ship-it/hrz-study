@@ -1,0 +1,9 @@
+node_modules
+dist
+.git
+.pnpm-store
+coverage
+output
+tmp
+*.local
+*.tsbuildinfo

@@ -1,0 +1,7 @@
+services:
+  study-mark:
+    build: .
+    container_name: study-mark
+    ports:
+      - "4173:80"
+    restart: unless-stopped
