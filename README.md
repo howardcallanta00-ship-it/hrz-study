@@ -80,7 +80,7 @@ Replace the example URL with your repository URL. `node_modules` and build outpu
 
 1. Sign in to Render and choose **New → Blueprint**.
 2. Connect the GitHub repository and select it.
-3. Render reads `render.yaml`, enables the pinned pnpm version, installs the frozen lockfile, runs `pnpm run build`, and publishes `dist`. This is the lockfile-safe equivalent of `npm ci && npm run build`.
+3. Render reads `render.yaml`, installs dependencies from the pnpm lockfile, runs `pnpm run build`, and publishes `dist`.
 4. Confirm the service is a Static Site and deploy it.
 5. Leave automatic deploys enabled; each push to the connected branch then triggers a new build.
 6. Open the deployed URL directly at `/quiz/general-science` to verify the SPA rewrite, then test a question and refresh.
