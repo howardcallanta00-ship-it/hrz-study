@@ -25,7 +25,7 @@ export function App(){
 }
 
 function Shell({children,theme,setTheme}: {children:ReactNode;theme?:ThemePreference;setTheme?:(t:ThemePreference)=>void}){
- return <div className="app-shell"><header className="topbar"><a className="brand" href="/"><span className="brand-mark">SM</span><span>Study Mark</span></a>{theme&&setTheme&&<ThemeControl value={theme} onChange={setTheme}/>}</header>{children}<footer><span>Progress is stored only in this browser.</span><span>Clearing browser data removes saved attempts.</span></footer></div>
+ return <div className="app-shell"><header className="topbar"><a className="brand" href="#/"><span className="brand-mark">SM</span><span>Study Mark</span></a>{theme&&setTheme&&<ThemeControl value={theme} onChange={setTheme}/>}</header>{children}<footer><span>Progress is stored only in this browser.</span><span>Clearing browser data removes saved attempts.</span></footer></div>
 }
 
 function ThemeControl({value,onChange}:{value:ThemePreference;onChange:(t:ThemePreference)=>void}){
@@ -46,7 +46,7 @@ function Library({attempts,reset,resetAll,theme,setTheme,storageOk}:{attempts:Re
 
 function QuizCard({quiz,attempt,index,reset}:{quiz:Quiz;attempt?:Attempt;index:number;reset:()=>void}){
  const checked=attempt?Object.keys(attempt.checked).length:0; const pct=Math.round((checked/quiz.questions.length)*100); const status=!attempt?'Not started':attempt.completed?'Completed':'In progress';
- return <article className="quiz-card"><div className="card-index">0{index}</div><div className="card-body"><div className="card-title-row"><h3>{quiz.title}</h3><span className={`status ${status.toLowerCase().replace(' ','-')}`}>{status}</span></div><p>{quiz.description}</p><dl><div><dt>Questions</dt><dd>{quiz.questions.length}</dd></div><div><dt>Formats</dt><dd>{quiz.formats.join(' · ')}</dd></div></dl>{attempt&&<div className="mini-progress"><div><span>{checked} of {quiz.questions.length} checked</span><span>{pct}%</span></div><progress value={checked} max={quiz.questions.length}>{pct}%</progress></div>}<div className="card-actions"><a className="button primary" href={`/quiz/${quiz.id}`}>{!attempt?'Start quiz':attempt.completed?'View results':'Resume quiz'} <ArrowRight/></a><button className="button quiet" onClick={reset} disabled={!attempt}>Reset progress</button></div></div></article>;
+ return <article className="quiz-card"><div className="card-index">0{index}</div><div className="card-body"><div className="card-title-row"><h3>{quiz.title}</h3><span className={`status ${status.toLowerCase().replace(' ','-')}`}>{status}</span></div><p>{quiz.description}</p><dl><div><dt>Questions</dt><dd>{quiz.questions.length}</dd></div><div><dt>Formats</dt><dd>{quiz.formats.join(' · ')}</dd></div></dl>{attempt&&<div className="mini-progress"><div><span>{checked} of {quiz.questions.length} checked</span><span>{pct}%</span></div><progress value={checked} max={quiz.questions.length}>{pct}%</progress></div>}<div className="card-actions"><a className="button primary" href={`#/quiz/${quiz.id}`}>{!attempt?'Start quiz':attempt.completed?'View results':'Resume quiz'} <ArrowRight/></a><button className="button quiet" onClick={reset} disabled={!attempt}>Reset progress</button></div></div></article>;
 }
 
 function QuizPage({attempts,update,reset,storageOk}:{attempts:Record<string,Attempt>;update:(id:string,a:Attempt)=>void;reset:(id:string)=>void;storageOk:boolean}){
